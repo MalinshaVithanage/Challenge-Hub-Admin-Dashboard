@@ -69,9 +69,9 @@ input[type="text"], input[type="email"]{
   border: none;
   font-size: 13px;
   background-color: var(--primary-color);
-  color: var(--secondary-color);
-  
+  color: var(--secondary-color); 
 }
+
 .ml-3 {
     margin-left: 0.75rem !important;
 }
