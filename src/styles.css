@@ -1,1 +1,80 @@
+@import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --primary-color:#026467;
+    --secondary-color:#E5F5EA;
+    --body-text-color: #596392;
+    --navbar-footer-color:#F9F9F9;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: var(--body-text-color);
+}
+.site-logo{
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    
+}
+
+
+.nav-item .nav-link {
+    color: var(--primary-color) ; 
+  }
+.card{
+    border: none;
+    box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+}
+.shadow-effect{
+    border: none;
+    box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+}
+.bg-theme{
+    background-color: var(--primary-color);
+}
+
+.bg-secondary-theme{
+    background-color: var(--secondary-color);
+}
+.text-theme-primary{
+    color: var(--primary-color); 
+}
+.p-5 {
+    overflow: hidden; /* Hide any content that overflows the box */
+}
+
+.p-5 p {
+    margin-bottom: 0; /* Remove default bottom margin of paragraphs */
+    word-wrap: break-word; /* Wrap long words to fit within the box */
+}
+
+input[type="text"], input[type="email"]{
+  height: 60px;
+  padding-left: 20px;
+  font-size: 13px;
+  width: 99%;
+  border: none;
+ 
+}
+
+.btn-theme{
+  height: 58px;
+  border: none;
+  font-size: 13px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  
+}
+.ml-3 {
+    margin-left: 0.75rem !important;
+}
+.ml-2 {
+    margin-left: 0.5rem !important;
+}
