@@ -15,10 +15,14 @@ import { getPerformance, providePerformance } from '@angular/fire/performance';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
 import { environment } from '../environments/environment.development';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
+    provideAnimations(), // required animations providers
+    provideToastr(), // Toastr providers
     provideClientHydration(), 
     importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))),
     importProvidersFrom(provideAuth(() => getAuth())), 
