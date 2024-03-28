@@ -5,6 +5,7 @@ import { collection } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { CategoriesService } from '../services/categories.service';
 import { Category } from '../models/category';
+import { log } from 'console';
 
 @Component({
   selector: 'app-categories',
@@ -18,7 +19,9 @@ export class CategoriesComponent {
   // afs = inject(Firestore);
 
   ngOnInit():void{
-    
+    this.categoryService.loadData().subscribe(val=> {
+      console.log(val); 
+    });
   }
   onSubmit(formData:any) {
     let categoryData :Category = {
