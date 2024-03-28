@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "challenge-hub-624de"
+  },
+  "targets": {
+    "challenge-hub-624de": {
+      "hosting": {
+        "server": [
+          "challenge-hub-624de"
+        ]
+      }
+    }
+  }
+}
