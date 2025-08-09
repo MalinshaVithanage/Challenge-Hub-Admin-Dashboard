@@ -7,7 +7,7 @@ export const environment = {
             projectId: "challenge-hub-624de",
             storageBucket: "challenge-hub-624de.appspot.com",
             messagingSenderId: "167327633065",
-            appId: "1:167327633065:web:ac88f604d5ea750f0c23b8"
+            appId: "1:167327633065:web:ac88f604d5ea750f0c23b8",
         }
     
 };
