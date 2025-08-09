@@ -5,7 +5,7 @@ import {
   collection,
   getDocs,
 } from '@angular/fire/firestore';
-import { QuerySnapshot, getDoc } from 'firebase/firestore';
+import { QuerySnapshot, getDoc, updateDoc} from 'firebase/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
 import { doc, DocumentSnapshot } from '@angular/fire/firestore';
@@ -43,5 +43,13 @@ export class CategoriesService {
           observer.error(error);
         });
     });
+  }
+
+  
+  updateData(id:string, editData:any) {
+      const docRef = doc(this.afs, 'categories', id);
+    updateDoc(docRef, editData).then(() => {
+    this.toastr.success('Data updated Successfully ..!');
+  });
   }
 }

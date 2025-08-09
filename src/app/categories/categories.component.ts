@@ -1,4 +1,4 @@
-import { Component, inject,   OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { addDoc } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { collection } from '@angular/fire/firestore';
@@ -16,6 +16,10 @@ import { log } from 'console';
 })
 export class CategoriesComponent implements OnInit {
   categoryArray: any[] = [];
+  formCategory: string = '';
+  formStatus: string = 'Add';
+  categoryId: string = '';
+
   constructor(private categoryService: CategoriesService) {}
   // afs = inject(Firestore);
 
@@ -29,9 +33,14 @@ export class CategoriesComponent implements OnInit {
     let categoryData: Category = {
       category: formData.value.category,
     };
-
-    this.categoryService.saveData(categoryData);
-    formData.resetForm();
+    if (this.formStatus == 'Add') {
+      this.categoryService.saveData(categoryData);
+      formData.resetForm();
+    } else if (this.formStatus == 'Update') {
+      this.categoryService.updateData(this.categoryId, categoryData);
+      formData.resetForm();
+      this.formStatus = 'Add';
+    }
 
     // addDoc(collection(this.afs, 'categories'), categoryData)
     //   .then((docRef) => {
@@ -65,5 +74,10 @@ export class CategoriesComponent implements OnInit {
     //   .catch((error) => {
     //     console.error('Error adding category: ', error);
     //   });
+  }
+  onEdit(category: any, id: string) {
+    this.formCategory = category;
+    this.formStatus = 'Update';
+    this.categoryId = id;
   }
 }
