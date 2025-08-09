@@ -80,4 +80,7 @@ export class CategoriesComponent implements OnInit {
     this.formStatus = 'Update';
     this.categoryId = id;
   }
+  onDelete(id: string) {
+    this.categoryService.deleteData(id);
+  }
 }
