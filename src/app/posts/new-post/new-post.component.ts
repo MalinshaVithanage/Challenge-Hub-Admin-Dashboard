@@ -5,6 +5,8 @@ import { CategoriesService } from '../../services/categories.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { title } from 'process';
+import { Post } from '../../models/post';
 
 
 @Component({
@@ -56,5 +58,29 @@ export class NewPostComponent {
     } 
     reader.readAsDataURL(event.target.files[0]);
     this.selectedImg = event.target.files[0];
+  }
+
+  onSubmit() {
+    console.log(this.postForm.value);
+
+    let splitted = this.postForm.value.category.split('-');
+
+
+    const postData : Post = {
+      title: this.postForm.value.title,
+      permalink: this.permalink,
+      category: {
+        categoryId: splitted[0],
+        category: splitted[1]
+      },
+      postImgPath: '',
+      excerpt: this.postForm.value.excerpt,
+      content: this.postForm.value.content,
+      isFeatured: false,
+      views: 0,
+      status: 'new',
+      createdAt: new Date()
+
+    };
   }
 }
