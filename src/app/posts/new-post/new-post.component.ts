@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CategoriesService } from '../../services/categories.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,12 +37,38 @@ export class NewPostComponent {
   categories: any[] = [];
 
   postForm: FormGroup;
-
+  post:any;
+  formStatus: string = 'Add New';
+  docId: string = '';
   constructor(
     private categoryService: CategoriesService,
     private fb: FormBuilder,
-    private postService: PostsService
+    private postService: PostsService,
+    private route: ActivatedRoute
   ) {
+
+      this.route.queryParams.subscribe((val) => {
+        this.docId = val['id'] ;
+    if (val['id']) {
+      this.postService.loadOneData(val['id']).subscribe((post: any) => {
+        if (post) {
+          this.post = post;
+          this.postForm.patchValue({
+            title: post.title,
+            permalink: post.permalink,
+            excerpt: post.excerpt,
+            category: [`${post.category.categoryId}-${post.category.category}`],
+            content: post.content,
+            postImg: '',
+          });
+          
+          this.imgSrc = this.post.postImgPath;
+          this.formStatus = 'Edit';
+        }
+      });
+    }
+  });
+  
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(10)]],
       permalink: ['', [Validators.required]],
@@ -96,8 +122,10 @@ export class NewPostComponent {
       status: 'new',
       createdAt: new Date(),
     };
-    this.postService.uploadImage(this.selectedImg, postData)
+    this.postService.uploadImage(this.selectedImg, postData,this.formStatus, this.docId)
     this.postForm.reset();
     this.imgSrc = './assets/placeholder-image.jpg';
   }
+
+
 }
