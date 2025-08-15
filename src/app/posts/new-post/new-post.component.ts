@@ -97,5 +97,7 @@ export class NewPostComponent {
       createdAt: new Date(),
     };
     this.postService.uploadImage(this.selectedImg, postData)
+    this.postForm.reset();
+    this.imgSrc = './assets/placeholder-image.jpg';
   }
 }
