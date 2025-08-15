@@ -100,4 +100,11 @@ export class PostsService {
       this.router.navigate(['/posts']);
     });
   }
+
+  markFeatured(id: string, featuredData: boolean) {
+    this.afs.doc(`posts/${id}`).update({ isFeatured: featuredData }).then(() => {
+      this.toastr.success('Post Featured Successfully');
+    
+    })
+  }
 }

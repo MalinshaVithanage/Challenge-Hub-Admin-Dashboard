@@ -25,5 +25,8 @@ export class AllPostComponent {
   onDelete(postImgPath: any, id: string) {
     this.postService.deleteImage(postImgPath, id);
   }
-
+  onFeatured(id: string, value: boolean) {
+    this.postService.markFeatured(id, value);
+   
+  }
 }
