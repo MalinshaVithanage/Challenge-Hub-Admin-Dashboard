@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { collection, getDocs } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { deleteObject, ref as storageRef } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -75,5 +76,28 @@ export class PostsService {
       this.toastr.success('Post Updated Successfully');
       this.router.navigate(['/posts']);
     })
+  }
+
+  deleteImage(postImgPath: any, id: string ){
+    try {
+    // Create a reference from the URL
+    const imgRef = storageRef(this.storage, postImgPath);
+
+    // Delete the file
+    deleteObject(imgRef)
+      .then(() => {
+        this.deleteData(id);
+       
+      })
+  } catch (error) {
+    console.error('Unexpected error:', error);
+  }
+  }
+
+  deleteData(id: string) {
+    this.afs.doc(`posts/${id}`).delete().then(() => {
+      this.toastr.warning('Post Deleted Successfully');
+      this.router.navigate(['/posts']);
+    });
   }
 }

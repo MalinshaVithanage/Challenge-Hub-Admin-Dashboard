@@ -22,5 +22,8 @@ export class AllPostComponent {
       this.postArray = val;
     });
   }
+  onDelete(postImgPath: any, id: string) {
+    this.postService.deleteImage(postImgPath, id);
+  }
 
 }
