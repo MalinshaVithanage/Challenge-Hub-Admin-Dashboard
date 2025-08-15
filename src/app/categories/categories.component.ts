@@ -42,38 +42,6 @@ export class CategoriesComponent implements OnInit {
       this.formStatus = 'Add';
     }
 
-    // addDoc(collection(this.afs, 'categories'), categoryData)
-    //   .then((docRef) => {
-    //     console.log('Category added with ID: ', docRef.id);
-    //     console.log(docRef);
-
-    //     addDoc(
-    //       collection(this.afs, 'categories', docRef.id, 'subCategories'),
-    //       subCategoryData
-    //     ).then((docRef1) => {
-    //       console.log(docRef1);
-
-    //       // this.afs.doc(`categories/${docRef.id}/subCategories/${docRef1.id}`).collection('subSubCategories').add(subCategoryData)
-
-    //       addDoc(
-    //         collection(
-    //           this.afs,
-    //           'categories',
-    //           docRef.id,
-    //           'subCategories',
-    //           docRef1.id,
-    //           'subSubCategories'
-    //         ),
-    //         subSubCategoryData
-    //       ).then((docRef2) => {
-    //         console.log('Second Level Subcategory saved successfully');
-    //       });
-    //     });
-    //     formData.resetForm();
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error adding category: ', error);
-    //   });
   }
   onEdit(category: any, id: string) {
     this.formCategory = category;
