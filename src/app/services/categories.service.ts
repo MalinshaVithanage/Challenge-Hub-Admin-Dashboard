@@ -3,9 +3,10 @@ import {
   Firestore,
   addDoc,
   collection,
+  deleteDoc,
   getDocs,
 } from '@angular/fire/firestore';
-import { QuerySnapshot, getDoc, updateDoc} from 'firebase/firestore';
+import { QuerySnapshot, getDoc, updateDoc } from 'firebase/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
 import { doc, DocumentSnapshot } from '@angular/fire/firestore';
@@ -45,11 +46,16 @@ export class CategoriesService {
     });
   }
 
-  
-  updateData(id:string, editData:any) {
-      const docRef = doc(this.afs, 'categories', id);
+  updateData(id: string, editData: any) {
+    const docRef = doc(this.afs, 'categories', id);
     updateDoc(docRef, editData).then(() => {
-    this.toastr.success('Data updated Successfully ..!');
-  });
+      this.toastr.success('Data updated Successfully ..!');
+    });
+  }
+  deleteData(id: string) {
+    const docRef = doc(this.afs, 'categories', id);
+    deleteDoc(docRef).then(() => {
+      this.toastr.success('Data deleted Successfully ..!');
+    });
   }
 }
