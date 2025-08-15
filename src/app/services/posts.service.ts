@@ -8,7 +8,7 @@ export class PostsService {
 
   constructor(private storage: Storage) { }
 
-  async uploadImage(selectedImage: File) {
+  async uploadImage(selectedImage: File, postData: any) {
     try {
       const filePath = `postIMG/${Date.now()}`;
       console.log('File path:', filePath);
@@ -19,6 +19,10 @@ export class PostsService {
       await uploadBytes(storageRef, selectedImage);
 
       console.log('Post image uploaded successfully');
+      const downloadURL = await import('@angular/fire/storage').then(m => m.getDownloadURL(storageRef));
+      postData.postImgPath = downloadURL;
+      console.log(postData);
+        
     } catch (error) {
       console.error('Error uploading image:', error);
     }
