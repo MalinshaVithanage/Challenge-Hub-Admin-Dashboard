@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FormsModule } from '@angular/forms';
 import { CONNREFUSED } from 'dns';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ import { CONNREFUSED } from 'dns';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  constructor(private authService: AuthService) { }
+
 onSubmit(formValue: any) {
-    console.log('Form Submitted!', formValue);
+    this.authService.login(formValue.email, formValue.password);
 }
 }
