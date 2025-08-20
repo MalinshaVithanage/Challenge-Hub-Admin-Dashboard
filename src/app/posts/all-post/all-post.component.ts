@@ -18,7 +18,6 @@ export class AllPostComponent {
 
   ngOnInit(): void {
     this.postService.loadData().subscribe(val => {
-      console.log(val);
       this.postArray = val;
     });
   }
