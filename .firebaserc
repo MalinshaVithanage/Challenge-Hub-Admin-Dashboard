@@ -7,8 +7,12 @@
       "hosting": {
         "server": [
           "challenge-hub-624de"
+        ],
+        "challengehub-admin-dashboard": [
+          "challenge-hub-admin"
         ]
       }
     }
-  }
+  },
+  "etags": {}
 }

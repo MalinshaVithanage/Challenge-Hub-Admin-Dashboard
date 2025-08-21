@@ -1,22 +1,17 @@
 {
-  "hosting": [
-    {
-      "source": ".",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "frameworksBackend": {
-        "region": "asia-east1"
+  "hosting": {
+     "target": "challengehub-admin-dashboard",
+    "public": "dist/server/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
-    },
-    {
-      "target": "server",
-      "source": ".",
-      "frameworksBackend": {
-        "region": "asia-east1"
-      }
-    }
-  ]
+    ]
+  }
 }
